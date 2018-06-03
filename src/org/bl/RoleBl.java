@@ -12,7 +12,7 @@ public class RoleBl {
 		if(role.getRoleName().isEmpty()) {
 			return false;
 		}
-		List<Object> l = dbUtil.getList("FROM Role");
+		List<Object> l = getList();
 		for(Object ob : l) {
 			if(((Role)ob).getRoleName().equals(role.getRoleName()))
 				return false;

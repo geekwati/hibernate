@@ -3,11 +3,16 @@ package org.domain;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="userdetails")
@@ -16,7 +21,8 @@ public class UserDetail {
 	private int userId;
 	private String userName;
 	private String phoneNo;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SELECT)
 	private Collection<Role> roleList = new ArrayList<Role>();
 	
 	public Collection<Role> getRoleList() {

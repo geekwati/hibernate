@@ -13,7 +13,7 @@ public class PermissionBl {
 		if(perm.getPermissionName().isEmpty()) {
 			return false;
 		}
-		List<Object> l = dbUtil.getList("FROM Permission");
+		List<Object> l = getList();
 		for(Object ob : l) {
 			if(((Permission)ob).getPermissionName().equals(perm.getPermissionName()))
 				return false;
